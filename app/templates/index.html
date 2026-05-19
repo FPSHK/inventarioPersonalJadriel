@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold">📦 Inventario Personal</h1>
+    <p class="lead text-muted mt-3">
+        Gestiona y organiza todos tus ítems personales en un solo lugar.
+    </p>
+    <hr class="my-4">
+    <p>Registra tus pertenencias, controla cantidades, precios y ubicaciones fácilmente.</p>
+    <div class="mt-4">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-dark btn-lg me-2">Iniciar Sesión</a>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-dark btn-lg">Registrarse</a>
+    </div>
+</div>
+
+<div class="row mt-5 text-center">
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4">
+            <h4>📝 Registra</h4>
+            <p class="text-muted">Añade tus ítems con nombre, categoría, cantidad y más.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4">
+            <h4>🔍 Organiza</h4>
+            <p class="text-muted">Filtra y visualiza tu inventario por categoría o ubicación.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4">
+            <h4>✏️ Actualiza</h4>
+            <p class="text-muted">Edita o elimina ítems cuando lo necesites.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

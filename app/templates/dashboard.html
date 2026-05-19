@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>📦 Mi Inventario</h2>
+    <a href="{{ url_for('main.items') }}" class="btn btn-dark">+ Nuevo Ítem</a>
+</div>
+
+{% if items %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Precio Estimado</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.categoria }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>{% if item.precio_estimado %}${{ "%.2f"|format(item.precio_estimado) }}{% else %}—{% endif %}</td>
+                <td>{{ item.ubicacion or '—' }}</td>
+                <td>
+                    <a href="{{ url_for('main.editar_item', id=item.id) }}" class="btn btn-sm btn-warning">✏️</a>
+                    <!-- Form POST en vez de <a href>, la ruta "eliminar_item" solo acepta POST-->
+                <form method="POST" action="{{ url_for('main.eliminar_item', id=item.id) }}"
+                        style="display: inline;"
+                        onsubmit="return confirm('¿Estás seguro de eliminar este item?')">
+                    <button type="submit" class="btn btn-sm btn-danger">🗑️</button>
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    No tienes ítems registrados aún. <a href="{{ url_for('main.items') }}">¡Agrega uno!</a>
+</div>
+{% endif %}
+{% endblock %}

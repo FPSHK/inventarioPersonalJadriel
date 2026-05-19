@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="card-title mb-4">
+                    {% if form.nombre.data %}✏️ Editar Ítem{% else %}➕ Nuevo Ítem{% endif %}
+                </h3>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        {{ form.nombre.label(class="form-label") }}
+                        {{ form.nombre(class="form-control", placeholder="Ej: Laptop, Bicicleta...") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.categoria.label(class="form-label") }}
+                        {{ form.categoria(class="form-select") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.cantidad.label(class="form-label") }}
+                        {{ form.cantidad(class="form-control", placeholder="Ej: 1") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.precio_estimado.label(class="form-label") }}
+                        {{ form.precio_estimado(class="form-control", placeholder="Ej: 299.99 (opcional)") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.ubicacion.label(class="form-label") }}
+                        {{ form.ubicacion(class="form-control", placeholder="Ej: Cuarto, Sala... (opcional)") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.fecha_adquisicion.label(class="form-label") }}
+                        {{ form.fecha_adquisicion(class="form-control") }}
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                        {{ form.submit(class="btn btn-dark") }}
+                        <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+### Obetener todos los items, GET
+
+GET http://localhost:5000/items
+Content-Type: application/json

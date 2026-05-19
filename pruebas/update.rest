@@ -1,0 +1,13 @@
+### Editar un item, PUT
+
+#Simulando PUT con nuevos datos del item
+
+PUT http://localhost:5000/items/1
+Content-Type: application/json
+
+{
+    "nombre": "Laptop Dell XPS 13 (actualizada)",
+    "cantidad": 2,
+    "precio_estimado": 1599.99,
+    "ubicacion": "Sala"
+}

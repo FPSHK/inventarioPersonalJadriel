@@ -1,0 +1,14 @@
+### Crear nuevo item, POST
+
+POST http://localhost:5000/items
+Content-Type: application/json
+
+{
+    "nombre": "Laptop Dell XPS 13",
+    "categoria": "Electronica",
+    "cantidad": 1,
+    "precio_estimado": 1599.99,
+    "ubicacion": "Oficina",
+    "fecha_adquisicion": "2025-05-15",
+    "owner_id": 2
+}
